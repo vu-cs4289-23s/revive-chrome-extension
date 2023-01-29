@@ -1,0 +1,9 @@
+{
+    "manifest_version": 3,
+    "name": "Revive",
+    "version": "1.0.0",
+    "description": "A Chrome extension to help you find secondhand clothing.",
+    "action": {
+        "default_popup": "index.html"
+    }
+}
