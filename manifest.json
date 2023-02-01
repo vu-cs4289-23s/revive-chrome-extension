@@ -5,5 +5,11 @@
     "description": "A Chrome extension to help you find secondhand clothing.",
     "action": {
         "default_popup": "index.html"
-    }
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.patagonia.com/product/*"],
+            "js": ["fetch_product.js"]
+        }
+    ]
 }
