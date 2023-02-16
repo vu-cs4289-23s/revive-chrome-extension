@@ -5,11 +5,18 @@
     "description": "A Chrome extension to help you find secondhand clothing.",
     "action": {
         "default_popup": "index.html"
-    },
+    },"permissions": [
+        "https://www.uniqlo.com/",
+        "file:///"
+    ],
     "content_scripts": [
         {
-            "matches": ["https://www.patagonia.com/product/*"],
+            "matches": ["https://www.uniqlo.com/us/en/products/*"],
             "js": ["fetch_product.js"]
-        }
+          },
+          {
+            "matches": ["file:///index.html"],
+            "js": ["display_product.js"]
+          }
     ]
 }
