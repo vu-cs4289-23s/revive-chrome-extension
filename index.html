@@ -17,32 +17,15 @@
             <p class="product-description">From TheRealReal</p>
             <p class="product-price">$124.4</p>
         </div>
-        <div class="product-item">
-            <img src="" alt="" class="product-image" />
-            <p class="product-title">Green fleece jacket</p>
-            <p class="product-description">From TheRealReal</p>
-            <p class="product-price">$124.4</p>
-        </div>
-        <div class="product-item">
-            <img src="" alt="" class="product-image" />
-            <p class="product-title">Green fleece jacket</p>
-            <p class="product-description">From TheRealReal</p>
-            <p class="product-price">$124.4</p>
-        </div>
-        <div class="product-item">
-            <img src="" alt="" class="product-image" />
-            <p class="product-title">Green fleece jacket</p>
-            <p class="product-description">From TheRealReal</p>
-            <p class="product-price">$124.4</p>
-        </div>
-        <div class="product-item">
-            <img src="" alt="" class="product-image" />
-            <p class="product-title">Green fleece jacket</p>
-            <p class="product-description">From TheRealReal</p>
-            <p class="product-price">$124.4</p>
-        </div>
+
+        <!-- Create product item using external input -->
+        <input type="text" id="input-product-title" placeholder="Product title" />
+        <input type="text" id="input-product-description" placeholder="Product description" />
+        <input type="text" id="input-product-price" placeholder="Product price" />
+        <button onclick="createProductItem(createProductObject())">Create Product Item</button>
     </div>
     
 </body>
-<script src="fetch_product.js"></script>
+<script src="display_product.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </html>
