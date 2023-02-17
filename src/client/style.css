@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    height: 600px; 
+    width: 400px;
+  }
+  
+  body {
+      font-family: 'Times New Roman', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: #FFFDF5;
+  }
+  
+  .product-list {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+  }
+  
+  .product-item {
+      background: #EBE9E1;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #ccc;
+      color: #000;
+      display: inline-block;
+      margin: 0 0 20px;
+      padding: 20px;
+      width: 80%;
+  }
+  
+  .product-image {
+      /* background-color: #000; */
+      display: block;
+      margin: 0 0 20px;
+  }
+  
+  .product-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 10px;
+  }
+  
+  .product-price {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 10px;
+  }
+
+  .nav-top {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #70AFD2;
+  }
+
+  .nav-bottom {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #EBE9E1;
+  }
+
+  li, a, button {
+    font-size: 18px;
+    font-weight: 700;
+    color: #70AFD2;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+  }
+
+  h1 {
+    color: #FFFDF5;
+    margin: 0 155px;
+  }
+
+  .nav_links {
+    list-style: none;
+  }
+
+  .nav_links li {
+    display: inline-block;
+    margin: 0 25px;
+  }
+
+  .nav_links li a {
+    transition: all 0.3s ease 0s;
+  }
+
+  .nav_links li a:hover {
+    color: #3E77A0;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #0088a9;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+
