@@ -23,16 +23,16 @@ export const ItemBox = (props) => {
           <img src= {props.coat} alt="" class="absolute inset-x-2 w-full h-full object-contain"/>
         </div>
         <form class="flex-auto pl-7 pr-4 pt-3 pb-3">
-            <div class="flex flex-wrap">
-                <h1 class="flex-auto text-lg font-semibold text-slate-900">
+            <h1 class="flex-auto text-lg font-semibold text-slate-900">
                 {props.name}
-                </h1>
+            </h1>
+            <div class="flex flex-wrap">
                 <div class="text-lg font-semibold text-stone-500 mr-1">
-                {props.price}
+                ${props.price}
                 </div>
-                <div class="text-lg font-semibold text-stone-500 line-through">
+                {/* <div class="text-lg font-semibold text-stone-500 line-through">
                 {props.ogprice}
-                </div>
+                </div> */}
             </div>
             <h2 class="flex-1 text-m pt-1 font-semibold text-stone-500">
               {props.platform}
