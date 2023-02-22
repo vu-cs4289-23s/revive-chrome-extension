@@ -30,10 +30,10 @@ export const Profile = () => {
 
     <div class="text-cyan-500">
         <TopBar/>
-        <div>
+        <div class="m-4">
             <h1 class="text-2xl font-mono text-cyan-500 text-center">Profile</h1>
         </div> 
-        <div>
+        <div class="m-5">
           <img src= {profileimg} alt="" class="items-center object-contain w-full h-20"/>
         </div>       
         <div class="font-sans bg-stone-200 m-3 rounded-xl shadow-md">
@@ -54,7 +54,7 @@ export const Profile = () => {
               previous orders, shipping status
           </h2>
         </div>
-        <div class="font-sans bg-stone-200 m-3 rounded-xl shadow-md">
+        <div class="font-sans bg-stone-200 m-3 mb-24 rounded-xl shadow-md">
           <h1 class="text-2xl font-mono text-cyan-500 text-center">Returns</h1>
           <h2 class="text-center text-m pt-1 font-semibold text-stone-500">
               initiate and edit order returns

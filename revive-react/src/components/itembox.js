@@ -19,22 +19,22 @@ export const Svg2 = () => {
 export const ItemBox = (props) => {
     return (
     <div class="flex font-sans bg-stone-200 m-3 rounded-xl shadow-md">
-        <div class="flex-auto w-48 relative items-center">
+        <div class="shrink-0 w-40 relative items-center">
           <img src= {props.coat} alt="" class="absolute inset-x-2 w-full h-full object-contain"/>
         </div>
         <form class="flex-auto pl-7 pr-4 pt-3 pb-3">
-            <h1 class="flex-auto text-lg font-semibold text-slate-900">
+            <h1 class="flex-auto text-m font-semibold text-slate-900">
                 {props.name}
             </h1>
             <div class="flex flex-wrap">
-                <div class="text-lg font-semibold text-stone-500 mr-1">
+                <div class="text-m font-semibold text-stone-500 mr-1">
                 ${props.price}
                 </div>
                 {/* <div class="text-lg font-semibold text-stone-500 line-through">
                 {props.ogprice}
                 </div> */}
             </div>
-            <h2 class="flex-1 text-m pt-1 font-semibold text-stone-500">
+            <h2 class="flex-1 text-sm pt-1 font-semibold text-stone-500">
               {props.platform}
             </h2>
           <div class="flex items-baseline mt-4 mb-6 pb-6 border-b border-stone-400">
@@ -49,7 +49,7 @@ export const ItemBox = (props) => {
           </div>
           <div class="flex space-x-4 mb-0 text-m font-medium">
             <div class="flex-auto flex space-x-4">
-              <button onClick = {props.handleView} class="h-10 px-6 font-semibold rounded-md bg-cyan-500 text-white" type="submit">
+              <button onClick = {props.handleView} class="h-10 px-6 font-semibold rounded-md bg-cyan-500 hover:bg-cyan-600 text-white" type="submit">
                 View
               </button>
             </div>

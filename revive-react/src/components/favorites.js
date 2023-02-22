@@ -43,9 +43,9 @@ export const Favorites = () => {
   let thredname = "Madewell Dress";
   let poshname = "Inusway Skirt";
 
-  let thredprice = "$30.79";
-  let poshprice = "$27.99";
-  let ogprice = "$50.00";
+  let thredprice = "30.79";
+  let poshprice = "27.99";
+  let ogprice = "50.00";
 
   let thredsize = "L";
   let poshsize = "M";
@@ -79,7 +79,7 @@ export const Favorites = () => {
     <div class="text-cyan-500">
         <TopBar/>
         <div>
-            <h1 class="text-2xl font-mono text-cyan-500 text-center">Favorites</h1>
+            <h1 class="text-l font-mono text-cyan-500 text-center">Favorites</h1>
         </div>
         <ItemBox coat = {thredupdress} name = {thredname} price = {thredprice} ogprice = {ogprice} size = {thredsize} platform = {thredplatform} handleView = {handleView} changeHeart = {changeHeart} heart={heart1}/>
         <ItemBox coat = {thredupskirt} name = {poshname} price = {poshprice} ogprice = {ogprice} size = {poshsize} platform = {poshplatform} handleView = {handleViewPosh} changeHeart = {changeHeart2} heart={heart2}/>

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import thredupcoat from './images/brown-coat-thredup.jpg';
-import poshmarkcoat from './images/brown-coat-poshmark.jpg';
 import { useNavigate } from "react-router-dom";
 
 import { TopBar } from "./topbar.js";
@@ -30,7 +28,7 @@ export const Home = () => {
             redirect: 'follow'
             };
             
-        fetch("https://77f395kgwf.execute-api.us-east-1.amazonaws.com/opensearch-api-test?q=gucci", requestOptions)
+        fetch("https://77f395kgwf.execute-api.us-east-1.amazonaws.com/opensearch-api-test?q=brown coat", requestOptions)
             .then(response => response.text())
             .then(response => JSON.parse(response))
             .then(response => setState(response))
@@ -41,56 +39,45 @@ export const Home = () => {
     useEffect(() => {
         // set product name
         setProductName(state?.hits?.hits[0]._source.product_name.S);
-        console.log(product_name);
     }, [state])
 
     useEffect(() => {
         // set product name
-        console.log(state);
         setProductPrice(state?.hits?.hits[0]._source.price.S);
-        console.log(product_price);
     }, [state])
     // console.log(state.hits[0].source);
 
     useEffect(() => {
         // set product name
-        console.log(state);
         setImage(state?.hits?.hits[0]._source.image_url.S);
-        console.log(image);
     }, [state])
 
     useEffect(() => {
         // set product size
         setSize(state?.hits?.hits[0]._source.size.S);
-        console.log(size);
     }, [state])
 
     //2
     useEffect(() => {
         // set product name
         setProductName2(state?.hits?.hits[1]._source.product_name.S);
-        console.log(product_name);
     }, [state])
 
     useEffect(() => {
         // set product name
         console.log(state);
         setProductPrice2(state?.hits?.hits[1]._source.price.S);
-        console.log(product_price);
     }, [state])
     // console.log(state.hits[0].source);
 
     useEffect(() => {
         // set product name
-        console.log(state);
         setImage2(state?.hits?.hits[1]._source.image_url.S);
-        console.log(image);
     }, [state])
 
     useEffect(() => {
         // set product size
         setSize2(state?.hits?.hits[1]._source.size.S);
-        console.log(size);
     }, [state])
 
 
@@ -127,7 +114,7 @@ export const Home = () => {
 
     let thredprice = product_price;
     let poshprice = product_price2;
-    let ogprice = "$99.00";
+    let ogprice = "99.00";
 
     let thredsize = size;
     let poshsize = size2;
