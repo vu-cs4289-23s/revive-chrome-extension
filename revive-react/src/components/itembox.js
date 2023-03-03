@@ -49,7 +49,7 @@ export const ItemBox = (props) => {
           </div>
           <div class="flex space-x-4 mb-0 text-m font-medium">
             <div class="flex-auto flex space-x-4">
-              <button onClick = {props.handleView} class="h-10 px-6 font-semibold rounded-md bg-cyan-500 hover:bg-cyan-600 text-white" type="submit">
+              <button onClick = {props.handleView} class="h-10 px-6 font-semibold rounded-md bg-cyan-500 hover:bg-cyan-600 transition-colors text-white" type="submit">
                 View
               </button>
             </div>

@@ -36,30 +36,30 @@ export const Profile = () => {
         <div class="m-5">
           <img src= {profileimg} alt="" class="items-center object-contain w-full h-20"/>
         </div>       
-        <div class="font-sans bg-stone-200 m-3 rounded-xl shadow-md">
+        <button class="font-sans bg-stone-200 mb-3 p-1 rounded-xl shadow-md w-full">
           <h1 class="text-2xl font-mono text-cyan-500 text-center">Settings</h1>
           <h2 class="text-center text-m pt-1 font-semibold text-stone-500">
               email, password, personal info
           </h2>
-        </div>
-        <div class="font-sans bg-stone-200 m-3 rounded-xl shadow-md">
+        </button>
+        <button class="font-sans bg-stone-200 mb-3 p-1 w-full rounded-xl shadow-md">
           <h1 class="text-2xl font-mono text-cyan-500 text-center">Sizes</h1>
           <h2 class="text-center text-m pt-1 font-semibold text-stone-500">
               set your preferred sizes
           </h2>
-        </div>
-        <div class="font-sans bg-stone-200 m-3 rounded-xl shadow-md">
+        </button>
+        <button class="font-sans bg-stone-200 mb-3 p-1 w-full rounded-xl shadow-md">
           <h1 class="text-2xl font-mono text-cyan-500 text-center">Orders</h1>
           <h2 class="text-center text-m pt-1 font-semibold text-stone-500">
               previous orders, shipping status
           </h2>
-        </div>
-        <div class="font-sans bg-stone-200 m-3 mb-24 rounded-xl shadow-md">
+        </button>
+        <button class="font-sans bg-stone-200 mb-24 p-1 w-full rounded-xl shadow-md">
           <h1 class="text-2xl font-mono text-cyan-500 text-center">Returns</h1>
           <h2 class="text-center text-m pt-1 font-semibold text-stone-500">
               initiate and edit order returns
           </h2>
-        </div>
+        </button>
         <NavBar handleFaves = {handleFaves} handleProfile={handleProfile} handleHome={handleHome}/>
     </div>
     </div>

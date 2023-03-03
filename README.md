@@ -6,7 +6,7 @@ usage:
 web-extension:
 1. cd revive-react
 2. npm install
-3. yarn run build
+3. yarn run build (may nedd to run as administrator if you're using windows.)
 
 if this is the first time building:
 follow the above steps, and then
