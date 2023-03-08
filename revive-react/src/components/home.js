@@ -4,17 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 import {ItemBox} from "./itembox.js";
-import {Svg1} from "./itembox.js";
-import {Svg2} from "./itembox.js";
 
 export const Home = () => {
     let navigate = useNavigate();
 
     const [state, setState] = useState(null);
-    const [product_name, setProductName] = useState('none');
-    const [product_price, setProductPrice] = useState('none');
-    const [image, setImage] = useState('none');
-    const [size, setSize] = useState('none');
+    const [product_name, setProductName] = useState([]);
+    const [product_price, setProductPrice] = useState([]);
+    const [image, setImage] = useState([]);
+    const [size, setSize] = useState([]);
+    const [url, setUrl] = useState([]);
 
     //fetch data from poshmark
     useEffect(() => { //calls once on mount
@@ -23,14 +22,14 @@ export const Home = () => {
             redirect: 'follow'
             };
             
-        fetch("https://77f395kgwf.execute-api.us-east-1.amazonaws.com/opensearch-api-test?q=gucci", requestOptions)
+        fetch("https://77f395kgwf.execute-api.us-east-1.amazonaws.com/opensearch-api-test?q=denim jacket", requestOptions)
             .then(response => response.text())
             .then(response => JSON.parse(response))
             .then(response => setState(response))
             .catch(error => console.log('error', error));          
     }, [])
 
-    //set product name, price, image, size for all hits in array
+    //set product name, price, image, siz, url for all hits in array
     useEffect(() => {
         // set product name for all hits in array
         setProductName(state?.hits?.hits.map((hit) => hit._source.product_name.S));
@@ -48,25 +47,20 @@ export const Home = () => {
     }, [state]);
 
     useEffect(() => {
+        // set product url for all hits in array
+        setUrl(state?.hits?.hits.map((hit) => hit._source.url?.S));
+    }, [state]);
+
+    useEffect(() => {
         // set product size for all hits in array
         setSize(state?.hits?.hits.map((hit) => hit._source.size.S));
     }, [state]);
-
-    //control heart/favoriates button
-    const [heart1, setHeart1] = useState(<Svg1 />);
-
-    const changeHeart = () => {
-        if (heart1.type === Svg1) {
-            setHeart1(<Svg2 />);
-        } else {
-            setHeart1(<Svg1 />);
-        }
-    }
 
     //populate the item boxes
     let itemBoxArray = [];
     if(product_name){
         for (var i = 0; i < 5; i++) {
+
             itemBoxArray.push(
                 <ItemBox 
                 coat = {image[i]} 
@@ -75,8 +69,7 @@ export const Home = () => {
                 ogprice = "99"
                 size = {size[i]} 
                 platform = "Poshmark" 
-                heart={heart1}
-                changeHeart = {changeHeart}
+                url = {url[i]}
                 />
             );
         }
@@ -97,17 +90,6 @@ export const Home = () => {
         event.preventDefault();
         navigate(`/`);
     }
-
-    //view button
-    // const handleView = (event) => { //happens on submit
-    //     event.preventDefault();
-    //     window.open('https://www.thredup.com/product/women-linen-elie-tahari-colored-trenchcoat/137818048?query_id=741168996376502272&result_id=741169000595898368&suggestion_id=741168996426833924&sizing_id=579%2C833%2C842%2C10812%2C10829%2C10832%2C10841%2C20812%2C20813%2C20822%2C20829%2C20832%2C20841%2C20926', '_blank');
-    // }
-
-    // const handleViewPosh = (event) => { //happens on submit
-    //     event.preventDefault();
-    //     window.open('https://poshmark.com/listing/Banana-Republic-Suede-car-coat-638cbde44bd760d5e62616dd', '_blank');
-    // }
 
   return (
     <div class="bg-slate-50 rounded-xl">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const Svg1 = () => {
     return (
@@ -17,6 +17,25 @@ export const Svg2 = () => {
 }
 
 export const ItemBox = (props) => {
+
+      //control heart/favorites button
+      const [heart, setHeart] = useState(<Svg1 />);
+
+      const changeHeart = () => {
+          if (heart.type === Svg1) {
+              setHeart(<Svg2 />);
+          } else {
+              setHeart(<Svg1 />);
+          }
+      }
+
+      //view button
+      const handleView = (event) => { //happens on submit
+        event.preventDefault();
+        window.open(props.url, '_blank');
+        console.log(props.url);
+    }
+
     return (
     <div class="flex font-sans bg-stone-200 m-3 rounded-xl shadow-md">
         <div class="shrink-0 w-40 relative items-center">
@@ -49,12 +68,12 @@ export const ItemBox = (props) => {
           </div>
           <div class="flex space-x-4 mb-0 text-m font-medium">
             <div class="flex-auto flex space-x-4">
-              <button onClick = {props.handleView} class="h-10 px-6 font-semibold rounded-md bg-cyan-500 hover:bg-cyan-600 transition-colors text-white" type="submit">
+              <button onClick = {handleView} class="h-10 px-6 font-semibold rounded-md bg-cyan-500 hover:bg-cyan-600 transition-colors text-white" type="submit">
                 View
               </button>
             </div>
-            <button onClick= {props.changeHeart} class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-cyan-700 border" type="button" aria-label="Like">
-                {props.heart}
+            <button onClick= {changeHeart} class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-cyan-700 border" type="button" aria-label="Like">
+                {heart}
             </button>
           </div>
         </form>
