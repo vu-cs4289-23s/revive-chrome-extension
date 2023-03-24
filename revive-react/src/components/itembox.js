@@ -20,6 +20,9 @@ export const ItemBox = (props) => {
 
       //control heart/favorites button
       const [heart, setHeart] = useState(<Svg1 />);
+      // const [heart_data, setHeart_data] = useState([]);
+    
+      // let {coat, name, ogprice, platform, price, size, url} = props;
 
       const changeHeart = () => {
           if (heart.type === Svg1) {
