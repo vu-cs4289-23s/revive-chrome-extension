@@ -19,15 +19,25 @@ export const Home = () => {
 
     // set data from the user site
     useEffect(() => {
-        // set product name for all hits in array
-        setUserData("denim jacket");
-    }, [user_data]);
+        console.log("Use Effect starting");
+        window.chrome.runtime.sendMessage({ action: "get-page-title" }, (response) => {
+          console.log(response);
+          setUserData(response);
+        });
+      }, []);
+
+    // set data from the user site
+    // useEffect(() => {
+    //     // set product name for all hits in array
+    //     setUserData("denim jacket");
+    // }, [user_data]);
 
     //fetch data from poshmark
     useEffect(() => { //calls once on mount
         let requestOptions = {
             method: 'GET',
-            redirect: 'follow'
+            redirect: 'follow',
+            mode: 'no-cors', // add this line to set the mode to 'no-cors'
             };
             
         fetch("https://77f395kgwf.execute-api.us-east-1.amazonaws.com/opensearch-api-test?q=" + user_data, requestOptions)
