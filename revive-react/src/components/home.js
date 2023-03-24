@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 import {ItemBox} from "./itembox.js";
@@ -14,6 +15,13 @@ export const Home = () => {
     const [image, setImage] = useState([]);
     const [size, setSize] = useState([]);
     const [url, setUrl] = useState([]);
+    const [user_data, setUserData] = useState("");
+
+    // set data from the user site
+    useEffect(() => {
+        // set product name for all hits in array
+        setUserData("denim jacket");
+    }, [user_data]);
 
     //fetch data from poshmark
     useEffect(() => { //calls once on mount
@@ -22,12 +30,12 @@ export const Home = () => {
             redirect: 'follow'
             };
             
-        fetch("https://77f395kgwf.execute-api.us-east-1.amazonaws.com/opensearch-api-test?q=denim jacket", requestOptions)
+        fetch("https://77f395kgwf.execute-api.us-east-1.amazonaws.com/opensearch-api-test?q=" + user_data, requestOptions)
             .then(response => response.text())
             .then(response => JSON.parse(response))
             .then(response => setState(response))
             .catch(error => console.log('error', error));          
-    }, [])
+    }, [user_data])
 
     //set product name, price, image, siz, url for all hits in array
     useEffect(() => {
@@ -59,7 +67,7 @@ export const Home = () => {
     //populate the item boxes
     let itemBoxArray = [];
     if(product_name){
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 3; i++) {
 
             itemBoxArray.push(
                 <ItemBox 
