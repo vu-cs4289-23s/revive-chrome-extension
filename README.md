@@ -1,6 +1,5 @@
 # revive-chrome-extension
 
-
 usage:
 
 web-extension:
