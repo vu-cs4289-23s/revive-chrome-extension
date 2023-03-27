@@ -19,6 +19,7 @@
     "128": "blue-circle-r.png"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "https://77f395kgwf.execute-api.us-east-1.amazonaws.com/"
   ]
 }
