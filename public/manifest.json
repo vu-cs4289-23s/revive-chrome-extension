@@ -1,7 +1,7 @@
 {
   "name": "Revive",
-  "description": "A Chrome extension to help you find secondhand clothing",
-  "version": "1.0.0",
+  "description": "A Chrome extension to help you find secondhand clothing.",
+  "version": "1.0.0.0",
   "manifest_version": 3,
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
