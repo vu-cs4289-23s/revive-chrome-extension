@@ -1,12 +1,17 @@
 {
   "name": "Revive",
   "description": "A Chrome extension to help you find secondhand clothing.",
-  "version": "1.0.0",
+  "version": "1.0.0.0",
   "manifest_version": 3,
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-  "browser_action": {
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "action": {
     "default_popup": "index.html",
     "default_title": "Revive"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "icons": {
     "16": "blue-circle-r.png",
@@ -14,6 +19,7 @@
     "128": "blue-circle-r.png"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "https://77f395kgwf.execute-api.us-east-1.amazonaws.com/"
   ]
 }
