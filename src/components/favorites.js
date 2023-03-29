@@ -27,6 +27,7 @@ export const Favorites = () => {
     //         .catch(error => console.log('error', error));          
     // }, [state]) //should there be anything in dependency array?
 
+    // //this may be overkill. Array might look different from the one in home.js
     // //set product name, price, image, size, url for all hits in array
     // useEffect(() => {
     //     // set product name for all hits in array

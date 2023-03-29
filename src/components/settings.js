@@ -41,10 +41,10 @@ export const Settings = () => {
         </div>
         </div>
         <button class="font-sans mb-3 p-1 w-full">
-          <h1 class="text-l font-mono text-slate-500 text-center">Privacy Policy</h1>
+          <h1 class="text-l font-mono text-slate-500 text-center hover:bg-slate-100">Privacy Policy</h1>
         </button>
         <button class="font-sans mb-3 p-1 w-full">
-          <h1 class="text-l font-mono text-slate-500 text-center">Sign Out</h1>
+          <h1 class="text-l font-mono text-slate-500 text-center hover:bg-slate-100">Sign Out</h1>
         </button>
         <NavBar/>
     </div>
