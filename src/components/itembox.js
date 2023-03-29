@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+//unfilled
 export const Svg1 = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -8,6 +9,7 @@ export const Svg1 = () => {
     )
 }
 
+//filled
 export const Svg2 = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -16,19 +18,58 @@ export const Svg2 = () => {
     )
 }
 
+
 export const ItemBox = (props) => {
 
       //control heart/favorites button
       const [heart, setHeart] = useState(<Svg1 />);
       // const [heart_data, setHeart_data] = useState([]);
     
-      // let {coat, name, ogprice, platform, price, size, url} = props;
+      // let {coat, name, platform, price, size, url} = props;   };
 
-      const changeHeart = () => {
+      const changeHeart = async (ev) => {
+        ev.preventDefault();
           if (heart.type === Svg1) {
               setHeart(<Svg2 />);
+              console.log("heart unfilled -> filled")
+
+              // add a new liked item
+              // const res = await fetch("/users/{user_id}/liked_items/{item_uuid}", {
+              //   method: "POST",
+              //   body: JSON.stringify(state),
+              //   credentials: "include",
+              //   headers: {
+              //     "content-type": "application/json",
+              //   },
+              // });
+              // if (res.ok) {
+              //   console.log("success");
+              // } else {
+              //   const err = await res.json();
+              //   setError(err.error);
+              //   console.log(err);
+              // }
+
           } else {
               setHeart(<Svg1 />);
+              console.log("heart filled -> unfilled")
+
+              // remove a liked item
+              // const res = await fetch("/users/{user_id}/liked_items/{item_uuid}", {
+              //   method: "DELETE",
+              //   body: JSON.stringify(state),
+              //   credentials: "include",
+              //   headers: {
+              //     "content-type": "application/json",
+              //   },
+              // });
+              // if (res.ok) {
+              //   console.log("success");
+              // } else {
+              //   const err = await res.json();
+              //   setError(err.error);
+              //   console.log(err);
+              // }
           }
       }
 
@@ -52,9 +93,6 @@ export const ItemBox = (props) => {
                 <div class="text-m font-semibold text-stone-500 mr-1">
                 ${props.price}
                 </div>
-                {/* <div class="text-lg font-semibold text-stone-500 line-through">
-                {props.ogprice}
-                </div> */}
             </div>
             <h2 class="flex-1 text-sm pt-1 font-semibold text-stone-500">
               {props.platform}

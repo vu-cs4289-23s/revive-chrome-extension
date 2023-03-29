@@ -3,7 +3,6 @@
 usage:
 
 web-extension:
-1. cd revive-react
 2. npm install
 3. yarn run build (may nedd to run as administrator if you're using windows.)
 
@@ -16,6 +15,5 @@ follow the above steps, and then
 7. open the build folder at the root of the revive-react folder
 
 web-view:
-1. cd revive-react
 2. npm install
 3. npm run build
