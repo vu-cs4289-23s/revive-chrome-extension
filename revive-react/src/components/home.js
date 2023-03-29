@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 
 import { TopBar } from "./topbar.js";
@@ -7,7 +6,6 @@ import { NavBar } from "./navbar.js";
 import {ItemBox} from "./itembox.js";
 
 export const Home = () => {
-    let navigate = useNavigate();
 
     const [state, setState] = useState(null);
     const [product_name, setProductName] = useState([]);
@@ -37,7 +35,7 @@ export const Home = () => {
             .catch(error => console.log('error', error));          
     }, [user_data])
 
-    //set product name, price, image, siz, url for all hits in array
+    //set product name, price, image, size, url for all hits in array
     useEffect(() => {
         // set product name for all hits in array
         setProductName(state?.hits?.hits.map((hit) => hit._source.product_name.S));
@@ -73,8 +71,7 @@ export const Home = () => {
                 <ItemBox 
                 coat = {image[i]} 
                 name = {product_name[i]} 
-                price = {product_price[i]} 
-                ogprice = "99"
+                price = {product_price[i]}
                 size = {size[i]} 
                 platform = "Poshmark" 
                 url = {url[i]}
@@ -83,27 +80,11 @@ export const Home = () => {
         }
     }
 
-    //navbar
-    const handleFaves = (event) => { //happens on submit
-        event.preventDefault();
-        navigate(`/favorites`);
-    }
-
-    const handleProfile = (event) => { //happens on submit
-        event.preventDefault();
-        navigate(`/profile`);
-    }
-
-    const handleHome = (event) => { //happens on submit
-        event.preventDefault();
-        navigate(`/`);
-    }
-
   return (
     <div class="bg-slate-50 rounded-xl">
         <TopBar/>
         {itemBoxArray}
-        <NavBar handleFaves = {handleFaves} handleProfile={handleProfile} handleHome={handleHome}/>
+        <NavBar/>
     </div>
   );
 }

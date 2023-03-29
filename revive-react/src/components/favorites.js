@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import thredupskirt from './images/skirt-thredup.jpg';
 import thredupdress from './images/dress-thredup.jpg';
-import { useNavigate } from "react-router-dom";
 
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
@@ -10,23 +9,6 @@ import {Svg1} from "./itembox.js";
 import {Svg2} from "./itembox.js";
 
 export const Favorites = () => {
-  let navigate = useNavigate();
-
-  //navbar
-  const handleFaves = (event) => { //happens on submit
-      event.preventDefault();
-      navigate(`/favorites`);
-  }
-
-  const handleProfile = (event) => { //happens on submit
-      event.preventDefault();
-      navigate(`/profile`);
-  }
-
-  const handleHome = (event) => { //happens on submit
-      event.preventDefault();
-      navigate(`/`);
-  }
 
   //view button
   const handleView = (event) => { //happens on submit
@@ -83,7 +65,7 @@ export const Favorites = () => {
         </div>
         <ItemBox coat = {thredupdress} name = {thredname} price = {thredprice} ogprice = {ogprice} size = {thredsize} platform = {thredplatform} handleView = {handleView} changeHeart = {changeHeart} heart={heart1}/>
         <ItemBox coat = {thredupskirt} name = {poshname} price = {poshprice} ogprice = {ogprice} size = {poshsize} platform = {poshplatform} handleView = {handleViewPosh} changeHeart = {changeHeart2} heart={heart2}/>
-        <NavBar handleFaves = {handleFaves} handleProfile={handleProfile} handleHome={handleHome}/>
+        <NavBar/>
     </div>
     </div>
   );

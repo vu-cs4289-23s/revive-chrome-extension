@@ -9,26 +9,10 @@ import { NavBar } from "./navbar.js";
 export const Profile = () => {
     let navigate = useNavigate();
 
-    const handleFaves = (event) => { //happens on submit
-        event.preventDefault();
-        navigate(`/favorites`);
-    }
-
-    const handleProfile = (event) => { //happens on submit
-        event.preventDefault();
-        navigate(`/profile`);
-    }
-
-    const handleHome = (event) => { //happens on submit
-        event.preventDefault();
-        navigate(`/`);
-    }
-
     const handleSettings = (event) => { //happens on submit
       event.preventDefault();
       navigate(`/settings`);
   }
-
 
   return (
     <div class="bg-slate-50">
@@ -36,7 +20,7 @@ export const Profile = () => {
     <div class="text-cyan-500">
         <TopBar/>
         <div class="m-4">
-            <h1 class="text-2xl font-mono text-cyan-500 text-center">Profile</h1>
+            <h1 class="text-2xl font-mono text-cyan-500 text-center">Settings</h1>
         </div> 
         <div class="m-5">
           <img src= {profileimg} alt="" class="items-center object-contain w-full h-20"/>
@@ -65,7 +49,7 @@ export const Profile = () => {
               initiate and edit order returns
           </h2>
         </button>
-        <NavBar handleFaves = {handleFaves} handleProfile={handleProfile} handleHome={handleHome}/>
+        <NavBar/>
     </div>
     </div>
   );

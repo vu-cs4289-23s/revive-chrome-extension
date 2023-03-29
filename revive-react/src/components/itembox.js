@@ -22,7 +22,7 @@ export const ItemBox = (props) => {
       const [heart, setHeart] = useState(<Svg1 />);
       // const [heart_data, setHeart_data] = useState([]);
     
-      // let {coat, name, ogprice, platform, price, size, url} = props;
+      let {coat, name, platform, price, size, url} = props;
 
       const changeHeart = () => {
           if (heart.type === Svg1) {
@@ -52,9 +52,6 @@ export const ItemBox = (props) => {
                 <div class="text-m font-semibold text-stone-500 mr-1">
                 ${props.price}
                 </div>
-                {/* <div class="text-lg font-semibold text-stone-500 line-through">
-                {props.ogprice}
-                </div> */}
             </div>
             <h2 class="flex-1 text-sm pt-1 font-semibold text-stone-500">
               {props.platform}
