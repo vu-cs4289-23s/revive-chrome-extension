@@ -5,12 +5,14 @@ export const NavBar = (props) => {
     //navbar
     const handleFaves = (event) => { //happens on submit
         event.preventDefault();
-        navigate(`/favorites`);
+        // navigate(`/favorites`);
+        navigate('/login');
     }
 
     const handleSettings = (event) => { //happens on submit
         event.preventDefault();
-        navigate(`/settings`);
+        // navigate(`/settings`);
+        navigate('/login');
     }
 
     const handleHome = (event) => { //happens on submit

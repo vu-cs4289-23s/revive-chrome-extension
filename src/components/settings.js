@@ -20,15 +20,31 @@ export const Settings = () => {
         <div class="m-5">
             <h1 class="text-l font-mono text-slate-500 text-center">signed in as: jacquelinebruce2012@gmail.com</h1>
         </div> 
-        <button class="font-sans bg-stone-200 mb-3 p-1 w-full rounded-xl shadow-md">
-          <h1 class="text-2xl font-mono text-cyan-500 text-center">Preferred Sizes</h1>
-          <ul>
-            <li class="text-l font-mono text-slate-500 text-center">XS</li>
-            <li class="text-l font-mono text-slate-500 text-center">S</li>
+        <div class="flex items-center justify-center">
+        <div class="font-sans bg-stone-200 mb-3  p-1 w-95 rounded-xl shadow-md">
+          <h1 class="text-xl font-mono text-cyan-500 text-center">Preferred Sizes</h1>
+          <ul class ="grid grid-cols-6 gap-5 ">
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">XS</button>
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">S</button>
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">M</button>
+            <button class=" bg-cyan-500 font-semibold text-sm text-white py-0 px-2 rounded-full">L</button>
+            <button class=" bg-cyan-500 font-semibold text-sm text-white py-0 px-2 rounded-full">XL</button>
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">XXL</button>
+
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">2</button>
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">4</button>
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">6</button>
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">8</button>
+            <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">10</button>
+            <button class=" bg-cyan-500 font-semibold text-sm text-white py-0 px-2 rounded-full">12</button>
           </ul>
+        </div>
+        </div>
+        <button class="font-sans mb-3 p-1 w-full">
+          <h1 class="text-l font-mono text-slate-500 text-center hover:bg-slate-100">Privacy Policy</h1>
         </button>
-        <button class="font-sans mb-3 p-1 w-full rounded-xl">
-          <h1 class="text-l font-mono text-slate-500 text-center">Sign Out</h1>
+        <button class="font-sans mb-3 p-1 w-full">
+          <h1 class="text-l font-mono text-slate-500 text-center hover:bg-slate-100">Sign Out</h1>
         </button>
         <NavBar/>
     </div>

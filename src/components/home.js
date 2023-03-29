@@ -74,7 +74,8 @@ export const Home = () => {
     //populate the item boxes
     let itemBoxArray = [];
     if(product_name){
-        for (var i = 0; i < product_name.length; i++) {
+        // change to product_name.length if you want to see all results
+        for (var i = 0; i < 5; i++) {
 
             itemBoxArray.push(
                 <ItemBox 
