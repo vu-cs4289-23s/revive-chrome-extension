@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 import {ItemBox} from "./itembox.js";
