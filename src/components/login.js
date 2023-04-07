@@ -10,6 +10,11 @@ export const Login = () => {
     //Seok Hee, add the SSO here!!
     const handleLogin = (event) => {
         event.preventDefault();
+        console.log("handleLogin called");
+        let SSO_PAGE = "https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=18u79hj2pun1qp370v006d7mm8&response_type=code&scope=email+openid+phone&redirect_uri=chrome-extension%3A%2F%2Fdbghifimlaocidlifhciedgacnbkkblk%2Foauth2%2Fidpresponse";
+        window.open(SSO_PAGE, "_blank");
+
+        // token logic here
     }
 
     return (
