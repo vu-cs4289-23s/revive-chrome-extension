@@ -10,6 +10,8 @@ export const Login = () => {
 
     const [accessToken, setAccessToken] = useState("");
     const [userId, setUserId] = useState("");
+    const [userName, setUserName] = useState("");
+    const [userPicture, setUserPicture] = useState("");
 
     // grab the access token from Chrome storage
     useEffect(() => {
@@ -37,8 +39,12 @@ export const Login = () => {
             }).then(function (data) {
                 console.log(data);
                 const userId = data.username;
+                const userName = data.given_name;
+                const userPicture = data.picture;
                 // const email = data.email;
                 setUserId(userId);
+                setUserName(userName);
+                setUserPicture(userPicture);
                 // console.log("User ID: ", userId);
             }).catch(function (error) {
                 console.error(error);
@@ -51,7 +57,7 @@ export const Login = () => {
         event.preventDefault();
         console.log("handleLogin called");
       
-        let SSO_PAGE = "https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=18u79hj2pun1qp370v006d7mm8&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Fexample.com%2Foauth2%2Fidpresponse";
+        let SSO_PAGE = "https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=18u79hj2pun1qp370v006d7mm8&response_type=code&scope=email+openid+phone+profile&redirect_uri=https%3A%2F%2Fexample.com%2Foauth2%2Fidpresponse";
         window.open(SSO_PAGE, "_blank");
     };
 
@@ -59,6 +65,8 @@ export const Login = () => {
         event.preventDefault();
         console.log("handleLogout called");
         setUserId("");
+        setUserName("");
+        setUserPicture("");
         // remove the access token from Chrome storage and reload the page to clear the state
         chrome.storage.local.remove("accessToken", function () {
             console.log("Access token removed from Chrome storage [login.js]");
@@ -74,15 +82,19 @@ export const Login = () => {
               <h1 class="text-2xl font-mono text-cyan-500 text-center">Settings</h1>
             </div>
             <div class="flex justify-center items-center">
-              <button class="m-15 px-4 py-2 text-center bg-cyan-500 font-bold text-5xl text-white rounded-full">
-                R
-              </button>
+              {userPicture ? (
+                <img src={userPicture} alt="Profile Picture" class="w-16 h-16 rounded-full" />
+              ) : (
+                <button class="m-15 px-4 py-2 text-center bg-cyan-500 font-bold text-5xl text-white rounded-full">
+                  R
+                </button>
+              )}
             </div>
             {userId ? (
               <div>
                 <div class="m-5">
                   <h1 class="text-l font-mono text-slate-500 text-center">
-                    Welcome, {userId}!
+                    Welcome, {userName}!
                   </h1>
                 </div>
                 <div class="flex justify-center items-center">
