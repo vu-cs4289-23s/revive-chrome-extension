@@ -14,14 +14,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 // listener for sign in authentication
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if (changeInfo.url && changeInfo.url.startsWith("https://example.com/oauth2/idpresponse")) {
-    console.log("callback URL detected");
 
     // get the authorization token (use this to get the access token)
     var authToken = new URLSearchParams(changeInfo.url.split("?")[1]).get("code").trim();
-    console.log("authToken: ", authToken);
-
     const authHeader = btoa(`18u79hj2pun1qp370v006d7mm8:lij91eft1hvsrlsp9t2q6div0gvmfiisdr5cuabmm7kha34n3va`);
-    console.log("authHeader: ", authHeader);
 
     // use the authentication token to obtain the access token and refresh token from Amazon Cognito
     fetch("https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/token", {
@@ -33,10 +29,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       body: "grant_type=authorization_code&code=" + authToken + "&client_id=18u79hj2pun1qp370v006d7mm8&redirect_uri=https%3A%2F%2Fexample.com%2Foauth2%2Fidpresponse"
     }).then(function(response) {
       if (response.ok) {
-        console.log("response is ok");
+        // console.log("response is ok");
         return response.json();
       } else {
-        console.log(response);
+        // console.log(response);
         throw new Error("Error obtaining access token");
       }
     }).then(function(data) {
@@ -47,12 +43,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         "accessToken": data.access_token,
         "refreshToken": data.refresh_token
       }, function() {
-        console.log("access token and refresh token stored in Chrome storage");
-        // print access token from Chrome storage
-        chrome.storage.local.get(["accessToken", "refreshToken"], function(result) {
-          console.log("access token from Chrome storage [background.js]: ", result.accessToken);
-          console.log("refresh token from Chrome storage [background.js]: ", result.refreshToken);
-        });
+        console.log("Access token and refresh token saved to Chrome storage");
       });
 
       chrome.tabs.remove(tabId);
