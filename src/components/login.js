@@ -1,20 +1,32 @@
 import React from "react";
 import googleimg from './images/google.png';
-
+// import AWS from 'aws-sdk';
+// import jwtDecode from 'jwt-decode';
 
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 
+// const cognito = new AWS.CognitoIdentityServiceProvider({
+//     region: 'us-east-1',
+//     params: { 
+//         ClientId: '18u79hj2pun1qp370v006d7mm8',
+//         UserPoolId: 'us-east-1_Nxq7XJvw6',
+//     }
+// });
+
+
 export const Login = () => {
 
-    //Seok Hee, add the SSO here!!
     const handleLogin = (event) => {
         event.preventDefault();
         console.log("handleLogin called");
-        let SSO_PAGE = "https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=18u79hj2pun1qp370v006d7mm8&response_type=code&scope=email+openid+phone&redirect_uri=chrome-extension%3A%2F%2Fdbghifimlaocidlifhciedgacnbkkblk%2Foauth2%2Fidpresponse";
-        window.open(SSO_PAGE, "_blank");
+        // let SSO_PAGE = "https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=18u79hj2pun1qp370v006d7mm8&response_type=code&scope=email+openid+phone&redirect_uri=chrome-extension%3A%2F%2Fdbghifimlaocidlifhciedgacnbkkblk%2Foauth2%2Fidpresponse";
+        let SSO_PAGE = "https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=18u79hj2pun1qp370v006d7mm8&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Fexample.com%2Foauth2%2Fidpresponse";
 
-        // token logic here
+        window.open(SSO_PAGE, "_blank");
+        
+        // need to add logic to get back the userid
+
     }
 
     return (

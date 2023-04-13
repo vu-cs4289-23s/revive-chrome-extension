@@ -11,7 +11,8 @@
     "default_title": "Revive"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "fetch": ["<all_urls>"]
   },
   "icons": {
     "16": "blue-circle-r.png",
@@ -21,6 +22,9 @@
   "permissions": [
     "activeTab",
     "tabs",
-    "https://77f395kgwf.execute-api.us-east-1.amazonaws.com/"
+    "storage",
+    "https://77f395kgwf.execute-api.us-east-1.amazonaws.com/",
+    "https://revive-auth.auth.us-east-1.amazoncognito.com/*",
+    "https://accounts.google.com/o/oauth2/v2/auth/*"
   ]
 }
