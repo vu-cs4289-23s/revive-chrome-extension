@@ -1,33 +1,56 @@
-import React from "react";
+/*global chrome*/
+
+import React, { useState, useEffect } from "react";
 import googleimg from './images/google.png';
-// import AWS from 'aws-sdk';
-// import jwtDecode from 'jwt-decode';
 
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 
-// const cognito = new AWS.CognitoIdentityServiceProvider({
-//     region: 'us-east-1',
-//     params: { 
-//         ClientId: '18u79hj2pun1qp370v006d7mm8',
-//         UserPoolId: 'us-east-1_Nxq7XJvw6',
-//     }
-// });
-
-
 export const Login = () => {
+
+    const [accessToken, setAccessToken] = useState("");
+
+    // grab the access token from Chrome storage
+    useEffect(() => {
+        chrome.storage.local.get("accessToken", function (data) {
+            console.log("access token from Chrome storage [login.js]: ", data.accessToken);
+            setAccessToken(data.accessToken);
+        });
+    }, []);
+
+    // fetch the userid from Cognito using the access token
+    useEffect(() => {
+        if (accessToken) {
+            fetch("https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/userInfo", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${accessToken}`,
+            },
+            }).then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.log(response);
+                    throw new Error("Error obtaining user information");
+                }
+            }).then(function (data) {
+                console.log(data);
+                const userId = data.sub;
+                console.log("User ID: ", userId);
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+      }, [accessToken]);    
+
 
     const handleLogin = (event) => {
         event.preventDefault();
         console.log("handleLogin called");
-        // let SSO_PAGE = "https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=18u79hj2pun1qp370v006d7mm8&response_type=code&scope=email+openid+phone&redirect_uri=chrome-extension%3A%2F%2Fdbghifimlaocidlifhciedgacnbkkblk%2Foauth2%2Fidpresponse";
+      
         let SSO_PAGE = "https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=18u79hj2pun1qp370v006d7mm8&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Fexample.com%2Foauth2%2Fidpresponse";
-
         window.open(SSO_PAGE, "_blank");
-        
-        // need to add logic to get back the userid
-
-    }
+    };
 
     return (
         <div class="bg-slate-50">

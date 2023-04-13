@@ -33,6 +33,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       body: "grant_type=authorization_code&code=" + authToken + "&client_id=18u79hj2pun1qp370v006d7mm8&redirect_uri=https%3A%2F%2Fexample.com%2Foauth2%2Fidpresponse"
     }).then(function(response) {
       if (response.ok) {
+        console.log("response is ok");
         return response.json();
       } else {
         console.log(response);
@@ -47,6 +48,11 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         "refreshToken": data.refresh_token
       }, function() {
         console.log("access token and refresh token stored in Chrome storage");
+        // print access token from Chrome storage
+        chrome.storage.local.get(["accessToken", "refreshToken"], function(result) {
+          console.log("access token from Chrome storage [background.js]: ", result.accessToken);
+          console.log("refresh token from Chrome storage [background.js]: ", result.refreshToken);
+        });
       });
 
       chrome.tabs.remove(tabId);
