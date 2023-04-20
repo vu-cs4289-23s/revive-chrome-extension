@@ -68,7 +68,7 @@ export const Login = () => {
       event.preventDefault();
       navigate("/privacy");
     }
-    
+
     const handleLogout = (event) => {
         event.preventDefault();
         console.log("handleLogout called");
@@ -102,11 +102,31 @@ export const Login = () => {
             {userId ? (
               <div>
                 <div class="m-5">
-                  <h1 class="text-l font-mono mb-8 text-slate-500 text-center">
+                  <h1 class="text-xl font-mono mb-3 text-cyan-700 text-center">
                     Welcome, {userName}!
                   </h1>
                 </div>
-                <div class="flex justify-center mb-8 items-center">
+                <div class="flex items-center justify-center">
+                <div class="font-sans bg-stone-200 mb-3  p-1 w-95 rounded-xl shadow-md">
+                  <h1 class="text-xl font-mono text-cyan-500 text-center">Preferred Sizes</h1>
+                  <ul class ="grid grid-cols-6 gap-5 ">
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">XS</button>
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">S</button>
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">M</button>
+                    <button class=" bg-cyan-500 font-semibold text-sm text-white py-0 px-2 rounded-full">L</button>
+                    <button class=" bg-cyan-500 font-semibold text-sm text-white py-0 px-2 rounded-full">XL</button>
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">XXL</button>
+
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">2</button>
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">4</button>
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">6</button>
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">8</button>
+                    <button class="bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold text-sm hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">10</button>
+                    <button class=" bg-cyan-500 font-semibold text-sm text-white py-0 px-2 rounded-full">12</button>
+                  </ul>
+                </div>
+                </div>
+                <div class="flex justify-center mb-3 mt-3 items-center">
                   <button onClick={handleLogout} class="bg-transparent hover:bg-red-500 mb-3 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
                     Logout
                   </button>
@@ -127,7 +147,7 @@ export const Login = () => {
                 </div>
               </div>
             )}
-            <button onCLick={handlePrivacy} class="font-sans mb-8 p-1 w-full">
+            <button onCLick={handlePrivacy} class="font-sans mb-3 p-1 w-full">
               <h1 class="text-l mb-8 font-mono text-slate-500 text-center hover:bg-slate-100">
                 Privacy Policy
               </h1>

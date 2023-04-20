@@ -9,6 +9,7 @@ import { Favorites } from "./components/favorites.js";
 import { Settings } from "./components/settings.js";
 import { Dropdown } from "./components/dropdown.js";
 import { Login } from "./components/login.js";
+import { Privacy } from "./components/privacy.js";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/dropdown" element={<Dropdown/>} />
           <Route exact path="/settings" element={<Settings/>} />
           <Route exact path="/login" element={<Login/>} />
+          <Route exact path="/privacy" element={<Privacy/>} />
         </Routes>
     </Router>
   );
