@@ -1,18 +1,32 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 export const NavBar = (props) => {
     let navigate = useNavigate();
     //navbar
+
     const handleFaves = (event) => { //happens on submit
         event.preventDefault();
+
+        // if (props.user === "") {
+        //     navigate(`/login`);
+        // } else {
+        //     navigate(`/favorites`);
+        // }
         // navigate(`/favorites`);
-        navigate('/login');
+        navigate('/loginfaves');
     }
 
     const handleSettings = (event) => { //happens on submit
         event.preventDefault();
+
+        // if (props.user === "") {
+        //     navigate(`/login`);
+        // } else {
+        //     navigate(`/settings`);
+        // }
         // navigate(`/settings`);
-        navigate('/login');
+        navigate('/loginsettings');
     }
 
     const handleHome = (event) => { //happens on submit

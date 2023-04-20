@@ -15,20 +15,20 @@ export const Home = () => {
     const [user_data, setUserData] = useState("");
 
     // set data from the user site
-    useEffect(() => {
-        console.log("Use Effect starting");
-        window.chrome.runtime.sendMessage({ action: "get-page-title" }, (response) => {
-          console.log(response);
-          response = response.split("|")[0].trim();
-          setUserData(response);
-        });
-      }, []);
+    // useEffect(() => {
+    //     console.log("Use Effect starting");
+    //     window.chrome.runtime.sendMessage({ action: "get-page-title" }, (response) => {
+    //       console.log(response);
+    //       response = response.split("|")[0].trim();
+    //       setUserData(response);
+    //     });
+    //   }, []);
 
     // set data from the user site
-    // useEffect(() => {
-    //     // set product name for all hits in array
-    //     setUserData("denim jacket");
-    // }, [user_data]);
+    useEffect(() => {
+        // set product name for all hits in array
+        setUserData("denim jacket");
+    }, [user_data]);
 
     //fetch data from poshmark
     useEffect(() => { //calls once on mount
@@ -75,7 +75,7 @@ export const Home = () => {
     let itemBoxArray = [];
     if(product_name){
         // change to product_name.length if you want to see all results
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 3; i++) {
 
             itemBoxArray.push(
                 <ItemBox 
@@ -88,6 +88,8 @@ export const Home = () => {
                 />
             );
         }
+
+        console.log(itemBoxArray);
     }
 
   return (

@@ -4,8 +4,20 @@ import profileimg from './images/profile.jpg';
 
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
+import { useNavigate } from "react-router-dom";
 
 export const Settings = () => {
+  let navigate = useNavigate();
+
+  const handleSignout = (event) => {
+    event.preventDefault();
+    navigate(`/loginsettings`);
+  }
+
+  const handlePrivacy = (event) => {
+    event.preventDefault();
+    navigate(`/privacy`);
+  }
 
   return (
     <div class="bg-slate-50">
@@ -40,10 +52,10 @@ export const Settings = () => {
           </ul>
         </div>
         </div>
-        <button class="font-sans mb-3 p-1 w-full">
+        <button onClick = {handlePrivacy} class="font-sans mb-3 p-1 w-full">
           <h1 class="text-l font-mono text-slate-500 text-center hover:bg-slate-100">Privacy Policy</h1>
         </button>
-        <button class="font-sans mb-3 p-1 w-full">
+        <button onClick = {handleSignout} class="font-sans mb-3 p-1 w-full">
           <h1 class="text-l font-mono text-slate-500 text-center hover:bg-slate-100">Sign Out</h1>
         </button>
         <NavBar/>
