@@ -66,8 +66,9 @@ export const Login = () => {
 
     const handlePrivacy = (event) => {
       event.preventDefault();
-      navigate("/privacy");
-    }
+      console.log("handlePrivacy called");
+      navigate('/privacy');
+    };
 
     const handleLogout = (event) => {
         event.preventDefault();
@@ -147,7 +148,7 @@ export const Login = () => {
                 </div>
               </div>
             )}
-            <button onCLick={handlePrivacy} class="font-sans mb-3 p-1 w-full">
+            <button onClick={handlePrivacy} class="font-sans mb-3 p-1 w-full">
               <h1 class="text-l mb-8 font-mono text-slate-500 text-center hover:bg-slate-100">
                 Privacy Policy
               </h1>

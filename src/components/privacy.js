@@ -4,8 +4,6 @@ import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 
 export const Privacy = () => {
-
-
   return (
     <div class="bg-slate-50 rounded-xl">
         <TopBar/>
