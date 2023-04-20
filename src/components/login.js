@@ -2,11 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import googleimg from './images/google.png';
+import { useNavigate } from "react-router-dom";
 
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 
 export const Login = () => {
+  let navigate = useNavigate();
+
 
     const [accessToken, setAccessToken] = useState("");
     const [userId, setUserId] = useState("");
@@ -61,6 +64,11 @@ export const Login = () => {
         window.open(SSO_PAGE, "_blank");
     };
 
+    const handlePrivacy = (event) => {
+      event.preventDefault();
+      navigate("/privacy");
+    }
+    
     const handleLogout = (event) => {
         event.preventDefault();
         console.log("handleLogout called");
@@ -79,11 +87,12 @@ export const Login = () => {
           <div class="text-cyan-500">
             <TopBar />
             <div class="m-4">
-              <h1 class="text-2xl font-mono text-cyan-500 text-center">Settings</h1>
+              <h1 class="text-2xl mb-8 font-mono text-cyan-500 text-center">
+              Settings</h1>
             </div>
-            <div class="flex justify-center items-center">
+            <div class="flex justify-center items-center mb-8">
               {userPicture ? (
-                <img src={userPicture} alt="Profile Picture" class="w-16 h-16 rounded-full" />
+                <img src={userPicture} alt="Profile Picture" class="w-20 h-20 rounded-full" />
               ) : (
                 <button class="m-15 px-4 py-2 text-center bg-cyan-500 font-bold text-5xl text-white rounded-full">
                   R
@@ -93,12 +102,12 @@ export const Login = () => {
             {userId ? (
               <div>
                 <div class="m-5">
-                  <h1 class="text-l font-mono text-slate-500 text-center">
+                  <h1 class="text-l font-mono mb-8 text-slate-500 text-center">
                     Welcome, {userName}!
                   </h1>
                 </div>
-                <div class="flex justify-center items-center">
-                  <button onClick={handleLogout} class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
+                <div class="flex justify-center mb-8 items-center">
+                  <button onClick={handleLogout} class="bg-transparent hover:bg-red-500 mb-3 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
                     Logout
                   </button>
                 </div>
@@ -106,20 +115,20 @@ export const Login = () => {
             ) : (
               <div>
                 <div class="m-5">
-                  <h1 class="text-l font-mono text-slate-500 text-center">
+                  <h1 class="text-l font-mono mb-8  text-slate-500 text-center">
                     Sign in for a more personalized experience!
                   </h1>
                 </div>
-                <div class="flex justify-center items-center">
-                  <button onClick={handleLogin} class="flex items-center justify-center mb-3 bg-transparent hover:bg-stone-400 text-cyan-700 font-semibold text-l hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">
+                <div class="flex justify-center items-center mb-8">
+                  <button onClick={handleLogin} class="flex items-center justify-center bg-transparent hover:bg-stone-400 text-cyan-700 font-semibold text-l hover:text-white py-0 px-2 border border-cyan-500 hover:border-transparent rounded-full">
                     <img src={googleimg} alt="" class="items-center object-contain w-8 h-6 m-1" />
                     <div>Sign in with Google</div>
                   </button>
                 </div>
               </div>
             )}
-            <button class="font-sans mb-3 p-1 w-full">
-              <h1 class="text-l font-mono text-slate-500 text-center hover:bg-slate-100">
+            <button onCLick={handlePrivacy} class="font-sans mb-8 p-1 w-full">
+              <h1 class="text-l mb-8 font-mono text-slate-500 text-center hover:bg-slate-100">
                 Privacy Policy
               </h1>
             </button>
