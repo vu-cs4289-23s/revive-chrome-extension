@@ -15,6 +15,8 @@ export const Login = ({userId, setUserId}) => {
     const [userName, setUserName] = useState("");
     const [userPicture, setUserPicture] = useState("");
 
+    // TODO - Login user if they are already logged in
+    
     // grab the access token from Chrome storage
     useEffect(() => {
         chrome.storage.local.get("accessToken", function (data) {
