@@ -6,7 +6,7 @@ import {ItemBox} from "./itembox.js";
 
 import { ENDPOINT } from "../config.js";
 
-export const Home = () => {
+export const Home = ({userId}) => {
 
     const [state, setState] = useState(null);
     const [product_name, setProductName] = useState([]);
@@ -14,6 +14,7 @@ export const Home = () => {
     const [image, setImage] = useState([]);
     const [size, setSize] = useState([]);
     const [url, setUrl] = useState([]);
+    const [item_uuid, setItemUuid] = useState([]);
     const [user_data, setUserData] = useState("");
 
     // set data from the user site
@@ -56,6 +57,7 @@ export const Home = () => {
         setImage(state?.hits?.hits.map((hit) => hit._source.image_url.S));
         setUrl(state?.hits?.hits.map((hit) => hit._source.url?.S));
         setSize(state?.hits?.hits.map((hit) => hit._source.size.S));
+        setItemUuid(state?.hits?.hits?.map((hit) => hit._source.uuid?.S));
 
     }, [state]);
 
@@ -73,6 +75,8 @@ export const Home = () => {
                 size = {size[i]} 
                 platform = "Poshmark" 
                 url = {url[i]}
+                userId = {userId}
+                item_uuid = {item_uuid[i]}
                 />
             );
         }

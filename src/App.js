@@ -22,7 +22,7 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route exact path="/" element={<Home/>} />
+          <Route exact path="/" element={<Home userId={userId}/>} />
           <Route exact path="/profile" element={<Profile/>} />
           <Route exact path="/favorites" element={<Favorites userId={userId}/>} />
           <Route exact path="/dropdown" element={<Dropdown/>} />
