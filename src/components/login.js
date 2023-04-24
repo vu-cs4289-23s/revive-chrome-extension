@@ -7,12 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 
-export const Login = () => {
+export const Login = ({userId, setUserId}) => {
   let navigate = useNavigate();
 
 
     const [accessToken, setAccessToken] = useState("");
-    const [userId, setUserId] = useState("");
     const [userName, setUserName] = useState("");
     const [userPicture, setUserPicture] = useState("");
 
