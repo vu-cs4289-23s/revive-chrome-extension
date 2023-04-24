@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId } from "react";
 
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 import {ItemBox} from "./itembox.js";
 
-const ENDPOINT = "https://77f395kgwf.execute-api.us-east-1.amazonaws.com/prod/liked_items";
+import { ENDPOINT } from "../config.js"
 
-export const Favorites = () => {
+export const Favorites = ({userId}) => {
 
     const [state, setState] = useState(null);
     const [product_name, setProductName] = useState([]);
@@ -14,40 +14,26 @@ export const Favorites = () => {
     const [image, setImage] = useState([]);
     const [size, setSize] = useState([]);
     const [url, setUrl] = useState([]);
-    const [user_data, setUserData] = useState("");
-
-    // set data from the user site
-    useEffect(() => {
-        console.log("Use Effect starting");
-        window.chrome.runtime.sendMessage({ action: "get-page-title" }, (response) => {
-          console.log(response);
-          response = response.split("|")[0].trim();
-          setUserData(response);
-        });
-      }, []);
-
-    // set data from the user site
-    // useEffect(() => {
-    //     // set product name for all hits in array
-    //     setUserData("denim jacket");
-    // }, [user_data]);
 
     //fetch data from poshmark
     useEffect(() => { //calls once on mount
+        if (!userId) {
+            return;
+        }
+
         let requestOptions = {
             method: 'GET',
             redirect: 'follow',
-            body: JSON.stringify({
-                "user_id": "5f9f9b0b-9b5f-4b9f-9b0b-9b5f9b0b9b5f",
-            }),
         };
+
+        console.log("Fetching data from: ", `${ENDPOINT}/liked_items/user_id=${userId}`)
             
-        fetch(ENDPOINT, requestOptions)
+        fetch(`${ENDPOINT}/liked_items?user_id=${userId}`, requestOptions)
             .then(response => response.text())
             .then(response => JSON.parse(response))
             .then(response => setState(response))
             .catch(error => console.log('error', error));          
-    }, [user_data])
+    }, [userId])
 
     //set product name, price, image, size, url for all hits in array
     useEffect(() => {
