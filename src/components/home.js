@@ -48,29 +48,15 @@ export const Home = () => {
 
     //set product name, price, image, size, url for all hits in array
     useEffect(() => {
-        // set product name for all hits in array
-        setProductName(state?.hits?.hits.map((hit) => hit._source.product_name.S));
         console.log(state);
-    }, [state]);
 
-    useEffect(() => {
-        // set product price for all hits in array
+        // Set product de
+        setProductName(state?.hits?.hits.map((hit) => hit._source.product_name.S));
         setProductPrice(state?.hits?.hits.map((hit) => hit._source.price.S));
-    }, [state]);
-
-    useEffect(() => {
-        // set product image for all hits in array
         setImage(state?.hits?.hits.map((hit) => hit._source.image_url.S));
-    }, [state]);
-
-    useEffect(() => {
-        // set product url for all hits in array
         setUrl(state?.hits?.hits.map((hit) => hit._source.url?.S));
-    }, [state]);
-
-    useEffect(() => {
-        // set product size for all hits in array
         setSize(state?.hits?.hits.map((hit) => hit._source.size.S));
+
     }, [state]);
 
     //populate the item boxes
