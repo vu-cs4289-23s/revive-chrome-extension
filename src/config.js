@@ -1,0 +1,1 @@
+const ENDPOINT = "https://77f395kgwf.execute-api.us-east-1.amazonaws.com/prod";
