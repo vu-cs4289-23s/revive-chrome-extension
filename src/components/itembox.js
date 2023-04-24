@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const ENDPOINT = "https://77f395kgwf.execute-api.us-east-1.amazonaws.com/prod/liked_items";
+
 //unfilled
 export const Svg1 = () => {
     return (
@@ -34,42 +36,48 @@ export const ItemBox = (props) => {
               console.log("heart unfilled -> filled")
 
               // add a new liked item
-              // const res = await fetch("/users/{user_id}/liked_items/{item_uuid}", {
-              //   method: "POST",
-              //   body: JSON.stringify(state),
-              //   credentials: "include",
-              //   headers: {
-              //     "content-type": "application/json",
-              //   },
-              // });
-              // if (res.ok) {
-              //   console.log("success");
-              // } else {
-              //   const err = await res.json();
-              //   setError(err.error);
-              //   console.log(err);
-              // }
+              const res = await fetch(ENDPOINT, {
+                method: "POST",
+                body: JSON.stringify({
+                  user_id: "1",
+                  item_uuid: "1",
+                }),
+                credentials: "include",
+                headers: {
+                  "content-type": "application/json",
+                },
+              });
+              if (res.ok) {
+                console.log("success");
+              } else {
+                const err = await res.json();
+                setError(err.error);
+                console.log(err);
+              }
 
           } else {
               setHeart(<Svg1 />);
               console.log("heart filled -> unfilled")
 
               // remove a liked item
-              // const res = await fetch("/users/{user_id}/liked_items/{item_uuid}", {
-              //   method: "DELETE",
-              //   body: JSON.stringify(state),
-              //   credentials: "include",
-              //   headers: {
-              //     "content-type": "application/json",
-              //   },
-              // });
-              // if (res.ok) {
-              //   console.log("success");
-              // } else {
-              //   const err = await res.json();
-              //   setError(err.error);
-              //   console.log(err);
-              // }
+              const res = await fetch(ENDPOINT, {
+                method: "DELETE",
+                body: JSON.stringify({
+                  user_id: "1",
+                  item_uuid: "1",
+                }),
+                credentials: "include",
+                headers: {
+                  "content-type": "application/json",
+                },
+              });
+              if (res.ok) {
+                console.log("success");
+              } else {
+                const err = await res.json();
+                setError(err.error);
+                console.log(err);
+              }
           }
       }
 
