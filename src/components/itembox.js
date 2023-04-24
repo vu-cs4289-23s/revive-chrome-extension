@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const ENDPOINT = "https://77f395kgwf.execute-api.us-east-1.amazonaws.com/prod/liked_items";
+import { ENDPOINT } from "../config.js"
 
 //unfilled
 export const Svg1 = () => {
@@ -26,58 +26,68 @@ export const ItemBox = (props) => {
       //control heart/favorites button
       const [heart, setHeart] = useState(<Svg1 />);
       // const [heart_data, setHeart_data] = useState([]);
+
+      useEffect(() => {
+        if (props.liked === true) {
+          setHeart(<Svg2 />);
+        } else {
+          setHeart(<Svg1 />);
+        }
+      }, [props.liked]);
     
       // let {coat, name, platform, price, size, url} = props;   };
 
       const changeHeart = async (ev) => {
         ev.preventDefault();
-          if (heart.type === Svg1) {
+          if (props.liked === false) {
               setHeart(<Svg2 />);
               console.log("heart unfilled -> filled")
 
               // add a new liked item
-              const res = await fetch(ENDPOINT, {
-                method: "POST",
-                body: JSON.stringify({
-                  user_id: "1",
-                  item_uuid: "1",
-                }),
-                credentials: "include",
-                headers: {
-                  "content-type": "application/json",
-                },
-              });
-              if (res.ok) {
-                console.log("success");
-              } else {
-                const err = await res.json();
-                setError(err.error);
-                console.log(err);
-              }
+              if (props.userId) {
+                const res = await fetch(`${ENDPOINT}/liked_items`, {
+                  method: "POST",
+                  body: JSON.stringify({
+                    user_id: props.userId,
+                    item_uuid: props.item_uuid,
+                  }),
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                });
+                if (res.ok) {
+                  console.log("success");
+                  props.setLikes[props.i] = true;
+                } else {
+                  const err = await res.json();
+                  console.log(err);
+                }
+            }
 
           } else {
               setHeart(<Svg1 />);
               console.log("heart filled -> unfilled")
 
               // remove a liked item
-              const res = await fetch(ENDPOINT, {
-                method: "DELETE",
-                body: JSON.stringify({
-                  user_id: "1",
-                  item_uuid: "1",
-                }),
-                credentials: "include",
-                headers: {
-                  "content-type": "application/json",
-                },
-              });
-              if (res.ok) {
-                console.log("success");
-              } else {
-                const err = await res.json();
-                setError(err.error);
-                console.log(err);
-              }
+              if (props.userId) {
+                  const res = await fetch(`${ENDPOINT}/liked_items`, {
+                    method: "DELETE",
+                    body: JSON.stringify({
+                      user_id: props.userId,
+                      item_uuid: props.item_uuid,
+                    }),
+                    headers: {
+                      "content-type": "application/json",
+                    },
+                  });
+                  if (res.ok) {
+                    console.log("success");
+                    props.setLikes[props.i] = false;
+                  } else {
+                    const err = await res.json();
+                    console.log(err);
+                  }
+            }
           }
       }
 

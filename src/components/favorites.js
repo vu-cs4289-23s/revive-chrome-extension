@@ -14,6 +14,10 @@ export const Favorites = ({userId}) => {
     const [image, setImage] = useState([]);
     const [size, setSize] = useState([]);
     const [url, setUrl] = useState([]);
+    const [item_uuid, setItemUuid] = useState([]);
+    const [likes, setLikes] = useState([]);
+
+    // TODO - Update data when user likes or unlikes an item
 
     //fetch data from poshmark
     useEffect(() => { //calls once on mount
@@ -37,36 +41,22 @@ export const Favorites = ({userId}) => {
 
     //set product name, price, image, size, url for all hits in array
     useEffect(() => {
-        // set product name for all hits in array
-        setProductName(state?.hits?.hits.map((hit) => hit._source.product_name.S));
         console.log(state);
-    }, [state]);
 
-    useEffect(() => {
-        // set product price for all hits in array
-        setProductPrice(state?.hits?.hits.map((hit) => hit._source.price.S));
-    }, [state]);
-
-    useEffect(() => {
-        // set product image for all hits in array
-        setImage(state?.hits?.hits.map((hit) => hit._source.image_url.S));
-    }, [state]);
-
-    useEffect(() => {
-        // set product url for all hits in array
-        setUrl(state?.hits?.hits.map((hit) => hit._source.url?.S));
-    }, [state]);
-
-    useEffect(() => {
-        // set product size for all hits in array
-        setSize(state?.hits?.hits.map((hit) => hit._source.size.S));
+        setProductName(state?.map((hit) => hit.product_name));
+        setProductPrice(state?.map((hit) => hit.price));
+        setImage(state?.map((hit) => hit.image_url));
+        setUrl(state?.map((hit) => hit.url));
+        setSize(state?.map((hit) => hit.size));
+        setItemUuid(state?.map((hit) => hit.uuid));
+        setLikes(state?.map((hit) => true));
     }, [state]);
 
     //populate the item boxes
     let itemBoxArray = [];
     if(product_name){
         // change to product_name.length if you want to see all results
-        for (var i = 3; i < 5; i++) {
+        for (var i = 0; i < product_name.length; i++) {
 
             itemBoxArray.push(
                 <ItemBox 
@@ -76,6 +66,11 @@ export const Favorites = ({userId}) => {
                 size = {size[i]} 
                 platform = "Poshmark" 
                 url = {url[i]}
+                userId = {userId}
+                item_uuid = {item_uuid[i]}
+                liked = {likes[i]}
+                setLikes = {setLikes}
+                i = {i}
                 />
             );
         }
