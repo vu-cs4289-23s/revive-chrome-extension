@@ -7,56 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { TopBar } from "./topbar.js";
 import { NavBar } from "./navbar.js";
 
-export const Login = ({userId, setUserId}) => {
+export const Login = ({userId, setUserId, userName, setUserName, userPicture, setUserPicture}) => {
   let navigate = useNavigate();
 
-
-    const [accessToken, setAccessToken] = useState("");
-    const [userName, setUserName] = useState("");
-    const [userPicture, setUserPicture] = useState("");
-
     // TODO - Login user if they are already logged in
-    
-    // grab the access token from Chrome storage
-    useEffect(() => {
-        chrome.storage.local.get("accessToken", function (data) {
-            console.log("access token from Chrome storage [login.js]: ", data.accessToken);
-            setAccessToken(data.accessToken);
-        });
-    }, []);
-
-    // fetch the userid from Cognito using the access token
-    useEffect(() => {
-        if (accessToken) {
-            fetch("https://revive-auth.auth.us-east-1.amazoncognito.com/oauth2/userInfo", {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${accessToken}`,
-            },
-            }).then(function (response) {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    console.log(response);
-                    throw new Error("Error obtaining user information");
-                }
-            }).then(function (data) {
-                console.log(data);
-                const userId = data.username;
-                const userName = data.given_name;
-                const userPicture = data.picture;
-                // const email = data.email;
-                setUserId(userId);
-                setUserName(userName);
-                setUserPicture(userPicture);
-                // console.log("User ID: ", userId);
-            }).catch(function (error) {
-                console.error(error);
-            });
-        }
-      }, [accessToken]);    
-
-
     const handleLogin = (event) => {
         event.preventDefault();
         console.log("handleLogin called");
