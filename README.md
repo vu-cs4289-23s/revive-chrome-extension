@@ -4,7 +4,7 @@ usage:
 
 web-extension:
 2. npm install
-3. yarn run build (may nedd to run as administrator if you're using windows.)
+3. yarn run build (may need to run as administrator if you're using windows.)
 
 if this is the first time building:
 follow the above steps, and then
